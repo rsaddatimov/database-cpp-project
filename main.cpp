@@ -58,7 +58,7 @@ int main() {
         } else if (command.empty()) {
             continue;
         } else {
-            hrow logic_error("Unknown command: " + command);
+            throw logic_error("Unknown command: " + command);
         }
     }
 
