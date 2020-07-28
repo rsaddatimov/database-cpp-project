@@ -4,13 +4,16 @@
 #include "node.h"
 #include "test_runner.h"
 
+#include <iomanip>
 #include <iostream>
 #include <stdexcept>
 
 using namespace std;
 
 string ParseEvent(istream& is) {
-    // Реализуйте эту функцию
+    string event;
+    getline(is >> ws, event);
+    return event;
 }
 
 void TestAll();
@@ -25,29 +28,37 @@ int main() {
 
         string command;
         is >> command;
+
         if (command == "Add") {
             const auto date = ParseDate(is);
             const auto event = ParseEvent(is);
+
             db.Add(date, event);
         } else if (command == "Print") {
             db.Print(cout);
         } else if (command == "Del") {
             auto condition = ParseCondition(is);
+
             auto predicate = [condition](const Date& date, const string& event) {
                 return condition->Evaluate(date, event);
             };
+
             int count = db.RemoveIf(predicate);
+
             cout << "Removed " << count << " entries" << endl;
         } else if (command == "Find") {
             auto condition = ParseCondition(is);
+
             auto predicate = [condition](const Date& date, const string& event) {
                 return condition->Evaluate(date, event);
             };
 
             const auto entries = db.FindIf(predicate);
+
             for (const auto& entry : entries) {
                 cout << entry << endl;
             }
+            
             cout << "Found " << entries.size() << " entries" << endl;
         } else if (command == "Last") {
             try {

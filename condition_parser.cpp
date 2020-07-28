@@ -70,7 +70,7 @@ shared_ptr<Node> ParseExpression(It& current, It end, unsigned precedence) {
         ++current; // consume '('
         left = ParseExpression(current, end, 0u);
         if (current == end || current->type != TokenType::PAREN_RIGHT) {
-        throw logic_error("Missing right paren");
+            throw logic_error("Missing right paren");
         }
         ++current; // consume ')'
     } else {
@@ -78,7 +78,8 @@ shared_ptr<Node> ParseExpression(It& current, It end, unsigned precedence) {
     }
 
     const map<LogicalOperation, unsigned> precedences = {
-        {LogicalOperation::Or, 1}, {LogicalOperation::And, 2}
+        {LogicalOperation::Or, 1},
+        {LogicalOperation::And, 2}
     };
 
     while (current != end && current->type != TokenType::PAREN_RIGHT) {
