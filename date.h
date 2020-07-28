@@ -11,6 +11,8 @@ public:
     int GetYear() const;
     int GetMonth() const;
     int GetDay() const;
+
+    bool operator<(cons Date& o);
     
 private:
     int year;

@@ -1,5 +1,7 @@
 #include "date.h"
 
+#include <tuple>
+
 Date::Date(int year, int month, int day) : year(year), month(month), day(day) {}
 
 int Date::GetYear() const {
@@ -12,6 +14,10 @@ int Date::GetMonth() const {
 
 int Date::GetDay() const {
     return day;
+}
+
+bool Date::operator<(const Date& o) {
+    return tie(year, month, day) < tie(o.year, o.month, o.day);
 }
 
 Date ParseDate(istream& in_stream) {
