@@ -2,7 +2,6 @@
 
 #include "date.h"
 
-#include <memory>
 #include <string>
 
 using namespace std;
