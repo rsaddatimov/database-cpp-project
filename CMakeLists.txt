@@ -10,4 +10,6 @@ add_executable(database
     condition_parser.cpp
     test_runner.cpp
     date.cpp
+        parser_nodes/empty_node.cpp
+        parser_nodes/date_comparison_node.cpp
 )
