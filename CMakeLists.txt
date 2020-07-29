@@ -11,6 +11,6 @@ add_executable(database
         condition_parser.cpp
         date.cpp
         node.cpp
-
-    test_runner.cpp
+    
+    condition_parser_test.cpp
 )

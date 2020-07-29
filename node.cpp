@@ -8,14 +8,14 @@ DateComparisonNode::DateComparisonNode(Comparison cmp, const Date& date)
     : comparison(cmp), dateStored(date) {}
 
 bool DateComparisonNode::Evaluate(const Date& date, const string& event) const {
-    return Compare(date, dateStored, comparison);
+    return Compare<const Date&>(date, dateStored, comparison);
 }
 
-EventComparisonNode::EventComparisonNode(Comparison cmp, const Date& date)
-    : comparison(cmp), date(date) {}
+EventComparisonNode::EventComparisonNode(Comparison cmp, const string& event)
+    : comparison(cmp), eventStored(event) {}
 
 bool EventComparisonNode::Evaluate(const Date& date, const string& event) const {
-    return Compare(event, eventStored, comparison);
+    return Compare<const string&>(event, eventStored, comparison);
 }
 
 LogicalOperationNode::LogicalOperationNode(

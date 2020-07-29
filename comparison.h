@@ -1,5 +1,9 @@
 #pragma once
 
+#include <functional>
+
+using namespace std;
+
 enum class Comparison {
     Less,
     LessOrEqual,
@@ -10,7 +14,7 @@ enum class Comparison {
 };
 
 template<class ValueType>
-bool Compare(const ValueType& lhs, const ValueType& rhs, Comparison cmp) {
+bool Compare(ValueType lhs, ValueType rhs, Comparison cmp) {
     switch (cmp) {
     case Comparison::Less:
         return lhs < rhs;

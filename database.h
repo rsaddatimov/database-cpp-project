@@ -2,10 +2,11 @@
 
 #include "date.h"
 
+#include <functional>
 #include <map>
 #include <vector>
 
-using Predicate = bool(const Date&, const string&);
+using Predicate = function<bool(const Date&, const string&)>;
 
 class Database {
 public:

@@ -4,6 +4,7 @@
 #include "logical_operation.h"
 #include "date.h"
 
+#include <memory>
 #include <string>
 
 
@@ -32,7 +33,7 @@ private:
 
 class EventComparisonNode : public Node {
 public:
-    EventComparisonNode(Comparison cmp, const Date& date);
+    EventComparisonNode(Comparison cmp, const string& event);
 
     bool Evaluate(const Date& date, const string& event) const override;
 private:

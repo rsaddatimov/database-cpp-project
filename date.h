@@ -1,18 +1,24 @@
 #pragma once
 
 #include <iostream>
+#include <tuple>
 
 using namespace std;
 
 class Date {
 public:
-    explicit Date(int year, int month, int day);
+    Date(int year, int month, int day);
     
     int GetYear() const;
     int GetMonth() const;
     int GetDay() const;
 
-    bool operator<(cons Date& o);
+    bool operator<(const Date& o) const;
+    bool operator<=(const Date& o) const;
+    bool operator>(const Date& o) const;
+    bool operator>=(const Date& o) const;
+    bool operator==(const Date& o) const;
+    bool operator!=(const Date& o) const;
     
 private:
     int year;
