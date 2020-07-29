@@ -38,7 +38,7 @@ ostream& operator<<(ostream& out_stream, const Date& date) {
     return out_stream;
 }
 
-bool Date::operator<(const Date& o) const { return tie(year, month, day) <= tie(o.year, o.month, o.day); }
+bool Date::operator<(const Date& o) const { return tie(year, month, day) < tie(o.year, o.month, o.day); }
 bool Date::operator<=(const Date& o) const { return tie(year, month, day) <= tie(o.year, o.month, o.day); }
 bool Date::operator>(const Date& o) const { return tie(year, month, day) > tie(o.year, o.month, o.day); }
 bool Date::operator>=(const Date& o) const { return tie(year, month, day) >= tie(o.year, o.month, o.day); }
