@@ -4,6 +4,8 @@
 
 #include <functional>
 #include <map>
+#include <set>
+#include <string>
 #include <vector>
 
 using Predicate = function<bool(const Date&, const string&)>;
@@ -19,4 +21,7 @@ public:
     vector<string> FindIf(Predicate pred) const;
 
     string Last(const Date& date) const;
+private:
+    map<Date, vector<string>> storage;
+    map<Date, set<string>> presence;
 };
