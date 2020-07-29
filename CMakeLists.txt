@@ -12,4 +12,5 @@ add_executable(database
     date.cpp
         parser_nodes/empty_node.cpp
         parser_nodes/date_comparison_node.cpp
+        parser_nodes/event_comparison_node.cpp
 )
