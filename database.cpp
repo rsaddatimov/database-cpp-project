@@ -29,8 +29,8 @@ int Database::RemoveIf(Predicate pred) {
         auto& date = kv.first;
         auto& ev_queue = kv.second;
 
-        auto it = remove_if(ev_queue.begin(), ev_queue.end(), [&date, &pred](const string& event) {
-            return pred(date, event);
+        auto it = stable_partition(ev_queue.begin(), ev_queue.end(), [&date, &pred](const string& event) {
+            return !pred(date, event);
         });
 
         count += ev_queue.end() - it;
@@ -64,7 +64,7 @@ vector<string> Database::FindIf(Predicate pred) const {
     for (const auto& kv : storage) {
         const auto& date = kv.first;
         const auto& ev_queue = kv.second;
-        
+
         for_each(ev_queue.begin(), ev_queue.end(), [&pred, &result, &date](const string& event) {
             if (pred(date, event)) {
                 ostringstream fmt;
