@@ -1,5 +1,6 @@
 #include "date.h"
 
+#include <iomanip>
 #include <tuple>
 
 Date::Date(int year, int month, int day) : year(year), month(month), day(day) {}
@@ -31,11 +32,11 @@ Date ParseDate(istream& in_stream) {
 }
 
 ostream& operator<<(ostream& out_stream, const Date& date) {
-    out_stream << date.GetYear()  << '-'
-               << date.GetMonth() << '-'
-               << date.GetDay();
+    out_stream << setfill('0') << setw(4);
+    out_stream << date.GetYear() << '-' << setw(2);
+    out_stream << date.GetMonth() << '-' << setw(2);
 
-    return out_stream;
+    return out_stream << date.GetDay();
 }
 
 bool Date::operator<(const Date& o) const { return tie(year, month, day) < tie(o.year, o.month, o.day); }

@@ -59,11 +59,13 @@ vector<string> Database::FindIf(Predicate pred) const {
     vector<string> result;
 
     for (const auto& [date, ev_queue] : storage) {
-        for_each(ev_queue.begin(), ev_queue.end(), [&result, &date](const string& event) {
-            ostringstream fmt;
-            fmt << date << ' ' << event;
+        for_each(ev_queue.begin(), ev_queue.end(), [&pred, &result, &date](const string& event) {
+            if (pred(date, event)) {
+                ostringstream fmt;
+                fmt << date << ' ' << event;
 
-            result.push_back(fmt.str());
+                result.push_back(fmt.str());
+            }
         });
     }
 
@@ -80,5 +82,8 @@ string Database::Last(const Date& date) const {
         --it;
     }
 
-    return it->second.back();
+    ostringstream fmt;
+    fmt << it->first << ' ' << it->second.back();
+
+    return fmt.str();
 }
