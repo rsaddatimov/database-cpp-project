@@ -5,13 +5,13 @@ This is my project where I implemented key-value database, which stores (date, e
 Database can store multiple events with same date.
 
 ## What database can
-- Add DATE EVENT - store (date, event) pair in database.
-- Print - prints all stored entries
-- Last DATE - prints last stored event by DATE date
-- Find CONDITION - finds and prints all entries which satisfy given CONDITION
-- Del CONDITION - deletes from database entries which satisfy given CONDITION
+- **Add** *DATE EVENT* - store (date, event) pair in database.
+- **Print** - prints all stored entries
+- **Last** *DATE* - prints last stored event by DATE date
+- **Find** *CONDITION* - finds and prints all entries which satisfy given CONDITION
+- **Del** *CONDITION* - deletes from database entries which satisfy given CONDITION
 
-CONDITION example: Del date == 2017-1-1 AND event == "test" OR date > 2018-1-1
+*CONDITION* example: Del date == 2017-1-1 AND event == "test" OR date > 2018-1-1
 
 ## How to build
 ```
